@@ -5,6 +5,10 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 
+// Routes import
+import productRoutes from "./routes/productRoutes.ts";
+import orderRoutes from "./routes/orderRoutes.ts";
+
 dotenv.config();
 
 const app: Application = express();
@@ -25,10 +29,14 @@ app.use(cookieParser());
 // CORS
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "http://localhost:5173",
+    origin: process.env.CLIENT_URL || "http://127.0.0.1:5000",
     credentials: true,
   })
 );
+
+// API Routes
+app.use("/api/products", productRoutes);
+app.use("/api/orders", orderRoutes);
 
 // Health check route
 app.get("/", (req, res) => {
