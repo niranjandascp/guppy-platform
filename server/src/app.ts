@@ -1,20 +1,38 @@
-import express from 'express'
-import cors from 'cors'
-import cookieParser from 'cookie-parser'
-import morgan from 'morgan'
-import dotenv from 'dotenv'
+import express, { Application } from "express";
+import cors from "cors";
+import helmet from "helmet";
+import morgan from "morgan";
+import cookieParser from "cookie-parser";
+import dotenv from "dotenv";
 
-dotenv.config()
+dotenv.config();
 
-const app = express()
+const app: Application = express();
 
-app.use(cors())
-app.use(cookieParser())
-app.use(express.json())
-app.use(morgan('dev'))
+// Security
+app.use(helmet());
 
-app.get('/', (_req, res) => {
-  res.json({ status: 'OK', message: 'TypeScript server is running' })
-})
+// Logger
+app.use(morgan("dev"));
 
-export default app
+// Body parser
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Cookie parser
+app.use(cookieParser());
+
+// CORS
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL || "http://localhost:5173",
+    credentials: true,
+  })
+);
+
+// Health check route
+app.get("/", (req, res) => {
+  res.json({ message: "Guppy Platform API is running 🐟" });
+});
+
+export default app;
