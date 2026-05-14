@@ -1,4 +1,4 @@
-Project: AquaDynasty
+Project: Ocean free aqua farm
 
 This is a premium guppy fish e-commerce platform.
 
@@ -15,6 +15,7 @@ Main features:
 - Orders
 - Admin product management
 - Admin order management
+- Admin user management
 
 Not now:
 - AI recommendation

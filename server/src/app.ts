@@ -5,42 +5,42 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 
-// Routes import
-import productRoutes from "./routes/productRoutes.ts";
-import orderRoutes from "./routes/orderRoutes.ts";
+import authRoutes from "./routes/authRoutes";
+import userRoutes from "./routes/userRoutes";
+import productRoutes from "./routes/productRoutes";
+import orderRoutes from "./routes/orderRoutes";
+import { notFound, errorHandler } from "./middleware/errorMiddleware";
 
 dotenv.config();
 
 const app: Application = express();
 
-// Security
 app.use(helmet());
-
-// Logger
 app.use(morgan("dev"));
-
-// Body parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-// Cookie parser
 app.use(cookieParser());
 
-// CORS
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "http://127.0.0.1:5000",
+    origin: process.env.CLIENT_URL || "http://localhost:5173",
     credentials: true,
   })
 );
 
-// API Routes
-app.use("/api/products", productRoutes);
-app.use("/api/orders", orderRoutes);
-
-// Health check route
+// Health check
 app.get("/", (req, res) => {
   res.json({ message: "Guppy Platform API is running 🐟" });
 });
+
+// Routes
+app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/orders", orderRoutes);
+
+// Error handlers — keep these last always
+app.use(notFound);
+app.use(errorHandler);
 
 export default app;

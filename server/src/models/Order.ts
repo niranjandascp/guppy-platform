@@ -39,20 +39,14 @@ const OrderSchema = new Schema<IOrder>(
     },
     products: [
       {
-        product: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "Product",
-        },
+        product: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
         title: String,
         price: Number,
         quantity: Number,
         image: String,
       },
     ],
-    totalPrice: {
-      type: Number,
-      required: true,
-    },
+    totalPrice: { type: Number, required: true },
     paymentStatus: {
       type: String,
       enum: ["pending", "paid", "failed"],
@@ -72,10 +66,7 @@ const OrderSchema = new Schema<IOrder>(
       pincode: String,
       country: String,
     },
-    trackingId: {
-      type: String,
-      default: "",
-    },
+    trackingId: { type: String, default: "" },
   },
   { timestamps: true }
 );
