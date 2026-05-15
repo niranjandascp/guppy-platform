@@ -42,7 +42,7 @@ export default function RegisterPage() {
   const onSubmit = (values: RegisterFormData) => mutate(values);
 
   return (
-    <div className="bg-slate-950 py-20">
+    <div className="py-20">
       <Container className="max-w-lg">
         <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
           <p className="text-sm uppercase tracking-[0.3em] text-cyan-300/80">Register</p>

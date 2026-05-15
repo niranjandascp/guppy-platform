@@ -39,7 +39,7 @@ export default function HomePage() {
   const scaleHero = useTransform(scrollYProgress, [0, 0.8], [1, 0.95]);
 
   return (
-    <div className="bg-slate-950">
+    <div>
       {/* Hero Section */}
       <section ref={heroRef} className="relative min-h-screen overflow-hidden flex items-center pt-20">
         <div className="absolute inset-0 z-0">
@@ -174,7 +174,7 @@ export default function HomePage() {
       </section>
 
       {/* Features Grid */}
-      <section className="py-32 bg-slate-950/50">
+      <section className="py-32">
         <Container>
           <div className="grid gap-12 lg:grid-cols-3">
             {[

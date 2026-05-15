@@ -1,9 +1,10 @@
 import Container from "./Container";
-import { Fish, Twitter, Instagram, Github } from "lucide-react";
+import { Fish } from "lucide-react";
+import { FaInstagram, FaGithub, FaTwitter } from 'react-icons/fa'
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-white/5 bg-slate-950 py-20 overflow-hidden">
+    <footer className="relative border-t border-white/5 bg-slate-950/80 backdrop-blur-xl py-20 overflow-hidden">
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-cyan-500/5 rounded-full blur-[100px]" />
       
       <Container>
@@ -32,7 +33,7 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-bold mb-6">Connect</h4>
             <div className="flex gap-4">
-              {[Twitter, Instagram, Github].map((Icon, i) => (
+              {[FaTwitter, FaInstagram, FaGithub].map((Icon, i) => (
                 <a key={i} href="#" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/60 hover:bg-cyan-400 hover:text-slate-950 transition-all duration-300">
                   <Icon size={18} />
                 </a>
@@ -51,4 +52,4 @@ export default function Footer() {
       </Container>
     </footer>
   );
-}
+}

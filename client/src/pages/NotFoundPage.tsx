@@ -4,7 +4,7 @@ import Button from "../components/ui/Button";
 
 export default function NotFoundPage() {
   return (
-    <div className="bg-slate-950 py-24">
+    <div className="py-24">
       <Container className="text-center">
         <p className="text-sm uppercase tracking-[0.3em] text-cyan-300/80">404</p>
         <h1 className="mt-4 text-4xl font-semibold text-white">Page not found</h1>

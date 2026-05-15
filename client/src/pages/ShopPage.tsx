@@ -3,7 +3,7 @@ import SectionHeading from "../components/ui/SectionHeading";
 
 export default function ShopPage() {
   return (
-    <div className="bg-slate-950 py-16">
+    <div className="py-16">
       <Container>
         <SectionHeading
           eyebrow="Shop"
