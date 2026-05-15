@@ -1,5 +1,7 @@
 import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
+import LiquidEther from './LiquidEther';
+import WaterRippleBackground from './WaterRippleBackground';
 
 const Bubble = ({ size, delay, x }: { size: number; delay: number; x: string }) => (
   <motion.div
@@ -58,6 +60,23 @@ export default function UnderwaterBackground() {
           background: 'linear-gradient(to bottom, rgba(2, 6, 23, 0.4) 0%, rgba(2, 6, 23, 0.7) 100%)',
         }}
       />
+
+      <div className="absolute inset-0 z-[1] opacity-30 mix-blend-screen">
+        <LiquidEther
+          colors={['#06B6D4', '#22D3EE', '#0891B2', '#155e75', '#042f2e']}
+          mouseForce={30}
+          cursorSize={140}
+          isViscous={true}
+          viscous={40}
+          resolution={0.4}
+          autoDemo={true}
+          autoSpeed={0.5}
+          autoIntensity={3.0}
+        />
+      </div>
+
+      {/* Interactive Water Ripple Layer */}
+      <WaterRippleBackground color="#22D3EE" strength={15} radius={4} />
 
       {/* Surface Light Rays Overlay */}
       <div 

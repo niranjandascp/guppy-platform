@@ -14,7 +14,7 @@ export default function Footer() {
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-cyan-400 text-slate-950">
                 <Fish size={20} strokeWidth={2.5} />
               </div>
-              <span className="text-xl font-bold tracking-tight text-white">AquaDynasty</span>
+              <span className="text-xl font-bold tracking-tight text-white">Ocean Free Aqua Farm</span>
             </div>
             <p className="text-slate-400 font-light leading-relaxed max-w-sm">
               The premier destination for high-grade guppy lineages and professional aquatic equipment. Elevating the hobby to an art form.
