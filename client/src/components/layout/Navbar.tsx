@@ -20,7 +20,7 @@ export default function Navbar() {
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-cyan-400 text-slate-950">
               <Fish size={20} strokeWidth={2.5} />
             </div>
-            <span className="text-lg font-bold tracking-tight text-white hidden sm:block">AquaDynasty</span>
+            <span className="text-lg font-bold tracking-tight text-white hidden sm:block">Ocean Free Aqua Farm</span>
           </Link>
 
           <nav className="hidden items-center gap-1 md:flex">
@@ -67,4 +67,4 @@ export default function Navbar() {
       </Container>
     </header>
   );
-}
+}
