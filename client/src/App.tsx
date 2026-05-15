@@ -6,14 +6,15 @@ import AppRouter from "./routes/AppRouter";
 function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-slate-950 text-white">
+      <div className="min-h-screen bg-slate-950 text-white selection:bg-cyan-400/30">
         <Navbar />
-        <main>
+        <main className="relative">
           <AppRouter />
         </main>
         <Footer />
       </div>
     </BrowserRouter>
+
   );
 }
 

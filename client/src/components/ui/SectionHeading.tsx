@@ -2,22 +2,25 @@ type Props = {
   eyebrow?: string;
   title: string;
   description?: string;
+  align?: "left" | "center";
 };
 
-export default function SectionHeading({ eyebrow, title, description }: Props) {
+export default function SectionHeading({ eyebrow, title, description, align = "left" }: Props) {
   return (
-    <div className="max-w-2xl">
-      {eyebrow ? (
-        <p className="mb-3 text-sm font-medium uppercase tracking-[0.25em] text-cyan-300/80">
+    <div className={`max-w-3xl ${align === "center" ? "mx-auto text-center" : ""}`}>
+      {eyebrow && (
+        <span className="inline-block mb-4 px-4 py-1.5 rounded-full border border-cyan-400/20 bg-cyan-400/5 text-[10px] font-bold uppercase tracking-[0.3em] text-cyan-400">
           {eyebrow}
-        </p>
-      ) : null}
-      <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+        </span>
+      )}
+      <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl text-gradient">
         {title}
       </h2>
-      {description ? (
-        <p className="mt-4 text-base leading-7 text-slate-300">{description}</p>
-      ) : null}
+      {description && (
+        <p className="mt-6 text-lg leading-relaxed text-slate-400 font-light">
+          {description}
+        </p>
+      )}
     </div>
   );
-}
+}

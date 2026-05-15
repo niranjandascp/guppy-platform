@@ -1,26 +1,68 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ocean: #071739;
-  --color-ocean-light: #0f2350;
-  --color-aqua: #00B4D8;
-  --color-emerald: #00C896;
-  --color-glass: rgba(255, 255, 255, 0.08);
-  --color-glass-border: rgba(255, 255, 255, 0.15);
+  --color-slate-950: #020617;
+  --color-cyan-400: #22d3ee;
+  --color-cyan-300: #67e8f9;
+  --color-fuchsia-500: #d946ef;
   
-  --font-sans: 'Poppins', system-ui, sans-serif;
-  --font-heading: 'Satoshi', 'Poppins', sans-serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'Outfit', sans-serif;
 }
 
 @layer base {
+  :root {
+    color-scheme: dark;
+  }
+  
   body {
-    @apply bg-ocean text-slate-100 font-sans antialiased min-h-screen selection:bg-aqua selection:text-ocean;
+    @apply bg-slate-950 text-slate-100 font-sans antialiased min-h-screen selection:bg-cyan-400/30 selection:text-white;
+    background-image: 
+      radial-gradient(circle at 50% -20%, rgba(34, 211, 238, 0.15), transparent 60%),
+      radial-gradient(circle at 0% 100%, rgba(217, 70, 239, 0.08), transparent 40%);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
   }
 }
 
-/* Custom Glassmorphism Utility */
 @layer utilities {
-  .glass-panel {
-    @apply bg-glass backdrop-blur-md border border-glass-border shadow-[0_4px_30px_rgba(0,0,0,0.1)];
+  .glass {
+    @apply bg-white/5 backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)];
   }
+  
+  .glass-card {
+    @apply bg-white/[0.03] backdrop-blur-lg border border-white/[0.08] hover:border-white/[0.15] transition-all duration-500;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-white/50;
+  }
+
+  .text-cyan-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-cyan-500;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-slate-950;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
 }
