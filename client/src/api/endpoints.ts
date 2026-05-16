@@ -24,10 +24,12 @@ export const ENDPOINTS = {
   coupons: {
     all: "/coupons",
     byId: (id: string) => `/coupons/${id}`,
+    validate: "/coupons/validate",
   },
   banners: {
     all: "/banners",
     byId: (id: string) => `/banners/${id}`,
+    active: "/banners/active",
   },
   reviews: {
     all: "/reviews",
@@ -37,5 +39,13 @@ export const ENDPOINTS = {
   },
   analytics: {
     dashboard: "/analytics/dashboard",
+  },
+  categories: {
+    all: "/categories",
+    byId: (id: string) => `/categories/${id}`,
+  },
+  notifications: {
+    all: "/notifications",
+    markRead: (id: string) => `/notifications/${id}/read`,
   },
 };

@@ -45,3 +45,8 @@ export const deleteCoupon = async (id: string) => {
   const { data } = await api.delete(ENDPOINTS.coupons.byId(id));
   return data;
 };
+
+export const validateCoupon = async (code: string, subtotal: number) => {
+  const { data } = await api.post(ENDPOINTS.coupons.validate, { code, subtotal });
+  return data;
+};

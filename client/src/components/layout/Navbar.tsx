@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import LogoutButton from "./LogoutButton";
 import { Search, X, Menu } from "lucide-react";
+import NotificationsDropdown from "./NotificationsDropdown";
 
 export default function Navbar() {
   const user = useAuthStore((state: AuthState) => state.user);
@@ -79,6 +80,8 @@ export default function Navbar() {
                 </motion.button>
               )}
             </AnimatePresence>
+
+            <NotificationsDropdown />
 
             <Link
               to="/wishlist"

@@ -45,3 +45,8 @@ export const deleteBanner = async (id: string) => {
   const { data } = await api.delete(ENDPOINTS.banners.byId(id));
   return data;
 };
+
+export const getActiveBanners = async (): Promise<Banner[]> => {
+  const { data } = await api.get(ENDPOINTS.banners.active);
+  return Array.isArray(data) ? data : data.banners || [];
+};

@@ -11,12 +11,21 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { IndianRupee, ShoppingCart, Users, Package } from "lucide-react";
 import { getDashboardAnalytics } from "../../features/admin/analyticsApi";
+
+const statCards = [
+  { key: "revenue", label: "Revenue", icon: IndianRupee, color: "text-cyan-300" },
+  { key: "orders", label: "Orders", icon: ShoppingCart, color: "text-emerald-300" },
+  { key: "users", label: "Users", icon: Users, color: "text-violet-300" },
+  { key: "products", label: "Products", icon: Package, color: "text-amber-300" },
+] as const;
 
 export default function AdminDashboardPage() {
   const { data, isLoading } = useQuery({
     queryKey: ["dashboard-analytics"],
     queryFn: getDashboardAnalytics,
+    refetchInterval: 30000,
   });
 
   const summary = data?.summary;
@@ -29,23 +38,29 @@ export default function AdminDashboardPage() {
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        {[
-          { title: "Revenue", value: summary?.revenue ?? 0, prefix: "₹" },
-          { title: "Orders", value: summary?.orders ?? 0, prefix: "" },
-          { title: "Users", value: summary?.users ?? 0, prefix: "" },
-          { title: "Products", value: summary?.products ?? 0, prefix: "" },
-        ].map((card) => (
-          <div
-            key={card.title}
-            className="rounded-2xl border border-white/10 bg-slate-900/60 p-5"
-          >
-            <p className="text-sm text-slate-400">{card.title}</p>
-            <p className="mt-3 text-2xl font-semibold text-white">
-              {card.prefix}
-              {card.value}
-            </p>
-          </div>
-        ))}
+        {statCards.map((card) => {
+          const Icon = card.icon;
+          const value = summary?.[card.key] ?? 0;
+
+          return (
+            <div
+              key={card.key}
+              className="rounded-2xl border border-white/10 bg-slate-900/60 p-5"
+            >
+              <div className="flex items-start justify-between">
+                <div>
+                  <p className="text-sm text-slate-400">{card.label}</p>
+                  <p className="mt-3 text-2xl font-semibold text-white">
+                    {card.key === "revenue" ? `₹${value}` : value}
+                  </p>
+                </div>
+                <div className={`rounded-2xl bg-white/5 p-3 ${card.color}`}>
+                  <Icon size={18} />
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
 
       {isLoading ? (

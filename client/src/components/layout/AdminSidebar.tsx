@@ -7,11 +7,13 @@ import {
   TicketPercent,
   Images,
   MessageSquare,
+  Shapes,
 } from "lucide-react";
 
 const links = [
   { to: "/admin", label: "Dashboard", icon: LayoutDashboard },
   { to: "/admin/products", label: "Products", icon: Package },
+  { to: "/admin/categories", label: "Categories", icon: Shapes },
   { to: "/admin/orders", label: "Orders", icon: ShoppingBag },
   { to: "/admin/users", label: "Users", icon: Users },
   { to: "/admin/coupons", label: "Coupons", icon: TicketPercent },

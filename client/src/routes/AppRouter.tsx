@@ -19,6 +19,7 @@ import AdminUsersPage from "../pages/admin/AdminUsersPage";
 import AdminCouponsPage from "../pages/admin/AdminCouponsPage";
 import AdminBannersPage from "../pages/admin/AdminBannersPage";
 import AdminReviewsPage from "../pages/admin/AdminReviewsPage";
+import AdminCategoriesPage from "../pages/admin/AdminCategoriesPage";
 
 export default function AppRouter() {
   return (
@@ -67,6 +68,7 @@ export default function AppRouter() {
       >
         <Route index element={<AdminDashboardPage />} />
         <Route path="products" element={<AdminProductsPage />} />
+        <Route path="categories" element={<AdminCategoriesPage />} />
         <Route path="orders" element={<AdminOrdersPage />} />
         <Route path="users" element={<AdminUsersPage />} />
         <Route path="coupons" element={<AdminCouponsPage />} />
