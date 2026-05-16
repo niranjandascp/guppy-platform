@@ -21,6 +21,16 @@ export const getProducts = async (req: Request, res: Response): Promise<void> =>
   }
 };
 
+// GET FEATUREED PRODUCTS
+export const getFeaturedProducts = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const products = await Product.find({ featured: true }).limit(3);
+    res.json(products);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch featured products" });
+  }
+};
+
 // GET SINGLE PRODUCT BY SLUG
 export const getProductBySlug = async (req: Request, res: Response): Promise<void> => {
   try {

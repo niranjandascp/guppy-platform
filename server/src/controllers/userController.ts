@@ -53,15 +53,30 @@ export const addAddress = async (
   res: Response
 ): Promise<void> => {
   try {
+    const { fullName, phone, addressLine1, addressLine2, city, state, postalCode, country } = req.body;
+
     const user = await User.findById(req.user?.userId);
     if (!user) {
       res.status(404).json({ message: "User not found" });
       return;
     }
-    user.addresses.push(req.body);
+
+    const newAddress = {
+      fullName,
+      phone,
+      line1: addressLine1,
+      line2: addressLine2,
+      city,
+      state,
+      pincode: postalCode,
+      country
+    };
+
+    user.addresses.push(newAddress);
     await user.save();
     res.json({ message: "Address added", addresses: user.addresses });
   } catch (error) {
+    console.error("Add address error:", error);
     res.status(500).json({ message: "Server error" });
   }
 };
@@ -79,7 +94,7 @@ export const deleteAddress = async (
     }
 
     user.addresses = user.addresses.filter(
-      (_: any, index: number) => index !== Number(req.params.index)
+      (addr: any) => addr._id.toString() !== req.params.id
     );
 
     await user.save();

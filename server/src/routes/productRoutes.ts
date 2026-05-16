@@ -2,6 +2,7 @@ import express from "express";
 import {
   createProduct,
   getProducts,
+  getFeaturedProducts,
   getProductBySlug,
   updateProduct,
   deleteProduct,
@@ -10,6 +11,7 @@ import {
 const router = express.Router();
 
 router.route("/").post(createProduct).get(getProducts);
+router.route("/featured").get(getFeaturedProducts);
 router.route("/:slug").get(getProductBySlug);
 router.route("/:id").put(updateProduct).delete(deleteProduct);
 

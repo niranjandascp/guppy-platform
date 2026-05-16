@@ -2,6 +2,8 @@ import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import LiquidEther from './LiquidEther';
 import WaterRippleBackground from './WaterRippleBackground';
+import FishParticleBackground from './FishParticleBackground';
+import FloatingModelBackground from './FloatingModelBackground';
 
 const Bubble = ({ size, delay, x }: { size: number; delay: number; x: string }) => (
   <motion.div
@@ -74,6 +76,12 @@ export default function UnderwaterBackground() {
           autoIntensity={3.0}
         />
       </div>
+
+      {/* Dynamic Fish Particle Background */}
+      <FishParticleBackground />
+
+      {/* Floating 3D Models Layer */}
+      <FloatingModelBackground />
 
       {/* Interactive Water Ripple Layer */}
       <WaterRippleBackground color="#22D3EE" strength={15} radius={4} />

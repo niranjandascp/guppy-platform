@@ -33,7 +33,7 @@ const AddressSchema = new Schema<IAddress>(
     pincode: { type: String, required: true },
     country: { type: String, required: true },
   },
-  { _id: false }
+  { timestamps: true }
 );
 
 const UserSchema = new Schema<IUser>(
